@@ -12,7 +12,7 @@
           v-model.trim="user.userid"
           required
           clearable
-          label="사용자IDD"
+          label="사용자ID"
           placeholder="사용자ID를 입력하십시오"
         />
 
