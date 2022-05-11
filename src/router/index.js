@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import Login from '../views/Login';
+// import Login from '../views/Login';
 import store from '@/store';
 import storage from '@/utils/storage';
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: Login,
+    component: Home,
   },
   {
     path: '/userLogin',
@@ -24,7 +24,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "Favorite" */ '@/views/Favorite.vue'),
     meta: {
       index: 1,
-      requireAuth: true // 当有这个字段的时候,我们就认为这个路由页面是要有登录权限的
+      requireAuth: true // 이 필드가 있는 경우 이 라우팅 페이지에 로그인 권한이 필요함.
     },
   },
   {

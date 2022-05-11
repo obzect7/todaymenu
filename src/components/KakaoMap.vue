@@ -36,7 +36,7 @@
         /* global kakao */
         script.onload = () => kakao.maps.load(this.initMap);
         script.src =
-          '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0';
+          '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=125e345ac435139818d7a993e17167cf';
         document.head.appendChild(script);
       }
     },
