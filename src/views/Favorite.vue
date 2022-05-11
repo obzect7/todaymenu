@@ -15,14 +15,20 @@
       </template>
     </van-card>
   </div>
+  <nav-bar></nav-bar>
 </template>
 
 <script>
   import { reactive, toRefs, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   import {getFavoriteList} from '../api/cafeteria'
+  import navBar from '@/components/NavBar'
+  import kakaoMap from '@/components/KakaoMap'
   export default {
     name: 'FavoriteCafe.vue',
+    components: {
+      navBar
+    },
     /* 공부합시다 vue3
     * Composition API 와 setup 함수의 등장
     Vue 3에서는 컴포넌트 객체에 setup 함수를 사용할 수 있다.
