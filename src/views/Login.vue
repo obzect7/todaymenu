@@ -1,13 +1,8 @@
 <template>
-  <div class="login">
-    <form @submit.prevent="handleLogin">
-      <!--
-      <img
-        class="login-poster"
-        src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png"
-      >
-      -->
-      <van-cell-group class="login-info">
+  <div class="content">
+    <van-form class="login-form" @submit.prevent="handleLogin">
+      <img src="@/assets/splashScreen.png" alt="">
+      <van-cell-group inset class="login-info">
         <van-field
           v-model.trim="user.userid"
           required
@@ -15,7 +10,6 @@
           label="사용자ID"
           placeholder="사용자ID를 입력하십시오"
         />
-
         <van-field
           v-model.trim="user.password"
           type="password"
@@ -28,14 +22,33 @@
           @click-right-icon="$toast('비밀번호를 잊으셨나요?')"
         />
       </van-cell-group>
-      <van-button
-        type="primary"
-        size="large"
-        @click="handleLogin"
-      >
-        로그인
-      </van-button>
-    </form>
+      <div style="margin: 16px;">
+        <van-button round
+          type="primary"
+          size="large"
+          @click="handleLogin"
+        >
+          로그인
+        </van-button>
+      </div>
+    </van-form>
+    <van-form class="syncLogin">
+      <div style="margin: 16px;">
+        <van-button color="#fef01b" round block type="primary" native-type="submit" @click="kakaoLogin">
+          카카오톡 계정으로 로그인
+        </van-button>
+      </div>
+      <div style="margin: 16px;">
+        <van-button color="#2db400" round block type="primary" native-type="submit">
+          네이버 계정으로 로그인
+        </van-button>
+      </div>
+      <div style="margin: 16px;">
+        <van-button color="#f3f3f3" round block type="primary" native-type="submit">
+          구글 계정으로 로그인
+        </van-button>
+      </div>
+    </van-form>
   </div>
 </template>
 
@@ -100,33 +113,24 @@ export default {
 </script>
 
 <style  scoped>
-.login {
-  background-color: #fff;
-  &-poster {
-    width: 100%;
-    height: 53vw;
-    display: block;
-  }
-  &-info {
-    margin-top: 15vw;
-  }
-  &-btn {
-    margin-top: 10vw;
-    width: 90%;
-    margin-left: 5%;
-  }
-  .van-button--primary {
-    color: #fff;
-    background-color: #FF595F;
-    border-color: #FF595F;
-  }
-  .van-button--large {
-    width: 90%;
-    margin-top: 10vw;
-    margin-left: 5%;
-    height: 5%;
-    line-height: 245%;
-  }
-}
+  .content{
+    height: 100vh;
+    width:100vw; 
 
+  }
+    img{ 
+        width : 30%;
+        height: 20%; 
+        display : block;
+        margin : auto;  
+    }
+  .login-form{
+    text-align:center;
+    margin: 0 auto;
+  }
+  .syncLogin{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+  }
 </style>
