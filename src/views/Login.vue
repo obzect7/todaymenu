@@ -42,6 +42,18 @@
 <script>
 import storage from '@/utils/storage'
 export default {
+  setup(){
+
+  },
+  mounted () {
+    this.$store.dispatch('LogOut', this.user).then(() => {
+      console.log('로그아웃 진행')
+    }).catch((error) => {
+      // 오류 메시지, 구성 요소 프롬프트
+      console.log('err ===',error);
+      this.$toast({ message: error, duration: 1000 })
+    })
+  },
   data() {
     return {
       user: { userid: '', password: '' }
