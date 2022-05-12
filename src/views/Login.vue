@@ -80,7 +80,6 @@ export default {
   methods: {
     // 로그인 기능
     handleLogin() {
-      console.log('@@@@@@@@@@@@@@@@')
       if (this.user.userid === '') {
         this.$toast({ message: '사용자ID를 입력하세요.', duration: 1000 })
         return false
@@ -107,6 +106,35 @@ export default {
         console.log('err ===',error);
         this.$toast({ message: error, duration: 1000 })
       })
+    },
+    kakaoLogin() {
+      console.log('카카오 로그인');
+      Kakao.Auth.login({
+        success: function (authObj) {
+          Kakao.Auth.setAccessToken(authObj.access_token);
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function (result) {
+                alert(
+                    JSON.stringify(result)
+                )
+                console.log(result)
+            },
+            fail: function (error) {
+                alert(
+                    'login success, but failed to request user information: ' +
+                    JSON.stringify(error)
+                )
+            },
+          })
+        },
+        fail: function (err) {
+            alert(JSON.stringify(err))
+        },  
+      })
+      Kakao.Auth.authorize({
+        redirectUri: 'http://localhost:8080/home'
+      });
     }
   }
 }

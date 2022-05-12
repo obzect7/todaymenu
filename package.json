@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "vant": "^3.4.9",
     "vue": "^3.0.0",
+    "vue-kakao-sdk": "^0.2.5",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
@@ -33,9 +34,6 @@
     "eslint-plugin-vue": "^7.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "2.6.2"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
