@@ -35,6 +35,14 @@ const routes = [
       index: 1,
     },
   },
+  {
+    path: '/MyOhme',
+    name: 'MyOhme',
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/MyOhme.vue'),
+    meta: {
+      index: 1,
+    },
+  },
 ];
 
 const router = createRouter({

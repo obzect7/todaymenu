@@ -3,7 +3,7 @@
     <van-tabbar-item name="home" icon="home-o" replace to="/home" >홈</van-tabbar-item>
     <van-tabbar-item name="like" icon="like-o" replace to="/favorite" >찜한식당</van-tabbar-item>
     <van-tabbar-item name="comment" icon="comment-o" replace to="/favorite" >출입내역</van-tabbar-item>
-    <van-tabbar-item name="friends" icon="friends-o" replace to="/userLogin" >My오메</van-tabbar-item>
+    <van-tabbar-item name="friends" icon="friends-o" replace to="/MyOhme" >My오메</van-tabbar-item>
   </van-tabbar>
 </template>
 

@@ -39,7 +39,7 @@
         </van-button>
       </div>
       <div style="margin: 16px;">
-        <van-button color="#2db400" round block type="primary" native-type="submit">
+        <van-button color="#2db400" round block type="primary" native-type="submit" @click="NaverLogin">
           네이버 계정으로 로그인
         </van-button>
       </div>
@@ -108,23 +108,22 @@ export default {
       })
     },
     kakaoLogin() {
-      console.log('카카오 로그인');
+      //로그인 도와줌
+      /*
+      Kakao.Auth.authorize({
+        redirectUri: 'http://localhost:8080/home'
+      });
+      */
       Kakao.Auth.login({
         success: function (authObj) {
           Kakao.Auth.setAccessToken(authObj.access_token);
           Kakao.API.request({
             url: '/v2/user/me',
             success: function (result) {
-                alert(
-                    JSON.stringify(result)
-                )
                 console.log(result)
             },
             fail: function (error) {
-                alert(
-                    'login success, but failed to request user information: ' +
-                    JSON.stringify(error)
-                )
+
             },
           })
         },
@@ -132,8 +131,11 @@ export default {
             alert(JSON.stringify(err))
         },  
       })
-      Kakao.Auth.authorize({
-        redirectUri: 'http://localhost:8080/home'
+    },
+    NaverLogin() {
+      console.log("카카오 토큰 코드", Kakao.Auth.getAccessToken());
+      Kakao.Auth.logout(function() {
+        console.log(Kakao.Auth.getAccessToken());
       });
     }
   }
