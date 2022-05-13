@@ -43,6 +43,14 @@ const routes = [
       index: 1,
     },
   },
+  {
+    path: '/SignUp',
+    name: 'SignUp',
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/SignUp.vue'),
+    meta: {
+      index: 2,
+    },
+  },
 ];
 
 const router = createRouter({

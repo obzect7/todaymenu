@@ -1,5 +1,10 @@
 <template>
   <div class="content">
+    <van-nav-bar
+      left-arrow
+      title = "Login"
+      @click-left="$router.replace('/MyOhme')"
+    />
     <van-form class="login-form" @submit.prevent="handleLogin">
       <img src="@/assets/splashScreen.png" alt="">
       <van-cell-group inset class="login-info">
@@ -23,12 +28,13 @@
         />
       </van-cell-group>
       <div style="margin: 16px;">
-        <van-button round
-          type="primary"
-          size="large"
-          @click="handleLogin"
-        >
-          로그인
+        <van-button round type="primary" size="large" @click="handleLogin">
+          Login
+        </van-button>
+      </div>
+      <div style="margin: 16px;">
+        <van-button plain round type="primary" size="large" router to ="/SignUp">
+          Sign Up 
         </van-button>
       </div>
     </van-form>
@@ -107,18 +113,40 @@ export default {
         this.$toast({ message: error, duration: 1000 })
       })
     },
+    // 카카오 로그인
     kakaoLogin() {
-      //로그인 도와줌
+      //로그인 도와줌 
       /*
       Kakao.Auth.authorize({
-        redirectUri: 'http://localhost:8080/home'
+        redirectUri: 'http://localhost:8080/home',
+        state : "ok",
+        scope : 'account_email'
       });
+      displayToken();
+      function displayToken() {
+              const token = getCookie('authorize-access-token')
+      if(token) {
+        Kakao.Auth.setAccessToken(token)
+        Kakao.Auth.getStatusInfo(({ status }) => {
+          if(status === 'connected') {
+            alert('login success. token: ' + Kakao.Auth.getAccessToken())
+          } else {
+            Kakao.Auth.setAccessToken(null)
+            alert('ddddddddd')
+          }
+        })
+      }
+      }
       */
       Kakao.Auth.login({
         success: function (authObj) {
+          console.log(authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           Kakao.API.request({
             url: '/v2/user/me',
+            data: {
+                property_keys: ["kakao_account.email","kakao_account.gender"]
+            },
             success: function (result) {
                 console.log(result)
             },
@@ -149,8 +177,8 @@ export default {
 
   }
     img{ 
-        width : 30%;
-        height: 20%; 
+        width : 50%;
+        height: 30%; 
         display : block;
         margin : auto;  
     }
